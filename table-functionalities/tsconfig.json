@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "es5",
+    "outDir": "./build",
+    "allowJs": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "jsx":"preserve"
+  },
+  "include": ["./src/**/*"],
+}

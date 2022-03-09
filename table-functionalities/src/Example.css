@@ -22,23 +22,21 @@
   border-radius: 4px;
 }
 
+.result-container {
+  padding-top: 24px;
+  font-size: 14px;
+  text-align: center;
+  border-top: 1px solid #f0f0f0;
+}
+
 .table {
   position: relative;
   width: 100%;
-  padding-top: 24px;
-  font-size: 14px;
-  border-top: 1px solid #f0f0f0;
+  text-align: left;
 }
 
 .table thead {
   background-color: #f0f0f0;
-  text-align: left;
-}
-
-.table thead tr {
-  position: sticky;
-  top: 0;
-  cursor: pointer;
 }
 
 .table thead tr th {
@@ -77,9 +75,21 @@
   background-color: transparent;
   border: 1px solid #cbd5e0;
   border-radius: 4px;
+  padding: 8px 0;
 }
 
-button:hover {
+.pagination button svg {
+  height: 10px;
+  width: 10px;
+}
+
+button:hover:not(:disabled) {
   border-color: #0ea5e9;
   color: #0ea5e9;
+  fill: #0ea5e9;
+  cursor: pointer;
+}
+
+button:disabled {
+  fill: #cbd5e0;
 }

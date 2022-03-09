@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { SearchIcon } from '../SearchIcon';
 
 import './SearchField.css';
 
@@ -9,7 +10,7 @@ interface Props {
 }
 
 const SearchField = ({ title, value, setValue }: Props) => {
-  // TODO: replace O\ with search icon, input focus styling
+  // TODO: input focus styling
   const [input, setInput] = React.useState<string>(value);
 
   React.useEffect(() => {
@@ -29,7 +30,9 @@ const SearchField = ({ title, value, setValue }: Props) => {
       <span>{title}</span>
       <div className="search-field">
         <input type="text" value={input} placeholder="Search..." onChange={handleChange} />
-        <div className="search-icon-container" onClick={handleSearch}>O\</div>
+        <div className="search-icon-container" onClick={handleSearch}>
+          <SearchIcon style={{ marginTop: 12, marginLeft: 12 }} />
+        </div>
       </div>
     </div>
   );

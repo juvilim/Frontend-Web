@@ -9,22 +9,28 @@
   border: 1px solid #cbd5e0;
   border-radius: 4px;
   text-transform: capitalize;
+  cursor: pointer;
 }
 
 .dropdown-field {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   line-height: 18px;
 }
 
 .arrow-icon-container {
-  color: #cbd5e0;
+  height: 12px;
+  width: 12px;
+  fill:#cbd5e0;
+  transition: all 90ms ease 0s;
 }
 
 .dropdown-options {
   width: 100%;
   position: absolute;
   z-index: 10;
+  padding: 4px 0;
   margin-top: 16px;
   margin-left: -12px;
   background-color: white;

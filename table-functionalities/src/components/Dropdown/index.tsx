@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ArrowDownIcon } from '../ArrowDownIcon';
 
 import './Dropdown.css';
 
@@ -10,7 +11,6 @@ interface Props {
 }
 
 const Dropdown = ({ title, options, selected, setSelected }: Props) => {
-  // TODO: replace V with arrow up/down icon based on state
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
@@ -19,7 +19,9 @@ const Dropdown = ({ title, options, selected, setSelected }: Props) => {
       <div className="dropdown-inner-container">
         <div className="dropdown-field" onClick={() => setIsOpen(!isOpen)}>
           {selected}
-          <div className="arrow-icon-container">V</div>
+          <div className="arrow-icon-container" style={{ transform: `rotate(${isOpen ? "180deg" : "0deg"})`}}>
+            <ArrowDownIcon />
+          </div>
         </div>
         {isOpen && (
           <div className="dropdown-options">

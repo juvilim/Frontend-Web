@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { SearchIcon } from '../SearchIcon';
+import * as React from "react";
+import { SearchIcon } from "../SearchIcon";
 
-import './SearchField.css';
+import "./SearchField.css";
 
 interface Props {
   title: string;

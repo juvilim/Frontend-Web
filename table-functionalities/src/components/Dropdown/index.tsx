@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { ArrowDownIcon } from '../ArrowDownIcon';
+import * as React from "react";
+import { ArrowDownIcon } from "../ArrowDownIcon";
 
-import './Dropdown.css';
+import "./Dropdown.css";
 
 interface Props {
   title: string;
@@ -19,7 +19,7 @@ const Dropdown = ({ title, options, selected, setSelected }: Props) => {
       <div className="dropdown-inner-container">
         <div className="dropdown-field" onClick={() => setIsOpen(!isOpen)}>
           {selected}
-          <div className="arrow-icon-container" style={{ transform: `rotate(${isOpen ? "180deg" : "0deg"})`}}>
+          <div className="arrow-icon-container" style={{ transform: `rotate(${isOpen ? "180deg" : "0deg"})` }}>
             <ArrowDownIcon />
           </div>
         </div>
@@ -27,7 +27,14 @@ const Dropdown = ({ title, options, selected, setSelected }: Props) => {
           <div className="dropdown-options">
             {options.map((option, index) => {
               return (
-                <div className="dropdown-option" key={index} onClick={() => { setSelected(option); setIsOpen(false);}}>
+                <div
+                  className="dropdown-option"
+                  key={index}
+                  onClick={() => {
+                    setSelected(option);
+                    setIsOpen(false);
+                  }}
+                >
                   {option}
                 </div>
               );

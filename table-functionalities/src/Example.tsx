@@ -1,5 +1,5 @@
 import * as React from "react";
-import './Example.css';
+import "./Example.css";
 import Dropdown from "./components/Dropdown";
 import SearchField from "./components/SearchField";
 import { SortDownIcon } from "./components/SortDownIcon";
@@ -26,22 +26,21 @@ function Example() {
   }, [searchValue, selectedGender]);
 
   const hasKeyword = (values: string[], keyword: string) => {
-    return values.some(value => value.toLowerCase().indexOf(keyword.toLowerCase()) !== -1);
+    return values.some((value) => value.toLowerCase().indexOf(keyword.toLowerCase()) !== -1);
   };
-  const filteredData = data?.filter(
-    user => {
-      let bool = true;
-      if (searchValue && selectedGender !== DEFAULT_GENDER) {
-        bool = hasKeyword([user.name.first, user.name.last, user.login.username, user.email], searchValue) && 
-        user.gender.toLowerCase() === selectedGender.toLowerCase()
-      } else if (searchValue) {
-        bool = hasKeyword([user.name.first, user.name.last, user.login.username, user.email], searchValue)
-      } else if (selectedGender !== DEFAULT_GENDER) {
-        bool = user.gender.toLowerCase() === selectedGender.toLowerCase()
-      }
-      return bool;
+  const filteredData = data?.filter((user) => {
+    let bool = true;
+    if (searchValue && selectedGender !== DEFAULT_GENDER) {
+      bool =
+        hasKeyword([user.name.first, user.name.last, user.login.username, user.email], searchValue) &&
+        user.gender.toLowerCase() === selectedGender.toLowerCase();
+    } else if (searchValue) {
+      bool = hasKeyword([user.name.first, user.name.last, user.login.username, user.email], searchValue);
+    } else if (selectedGender !== DEFAULT_GENDER) {
+      bool = user.gender.toLowerCase() === selectedGender.toLowerCase();
     }
-  );
+    return bool;
+  });
   const tableData = React.useMemo(() => {
     if (!filteredData) return;
     const startIndex = (page - 1) * DEFAULT_PAGE_SIZE;
@@ -54,13 +53,18 @@ function Example() {
     setSelectedGender(DEFAULT_GENDER);
   };
 
-console.log(data, tableData);
+  console.log(data, tableData);
   const renderResult = () => {
     if (isLoading) return <div className="result-container">Loading result...</div>;
     if (isError) return <div className="result-container">{error}</div>;
 
     const totalPage = Math.ceil(filteredData.length / DEFAULT_PAGE_SIZE);
-    const selectedPageStyle: React.CSSProperties = { borderColor: "#0ea5e9", color: "#0ea5e9", fill: "#0ea5e9", pointerEvents: "none" };
+    const selectedPageStyle: React.CSSProperties = {
+      borderColor: "#0ea5e9",
+      color: "#0ea5e9",
+      fill: "#0ea5e9",
+      pointerEvents: "none"
+    };
     return (
       <div className="result-container">
         <table className="table">
@@ -74,9 +78,21 @@ console.log(data, tableData);
             </tr>
           </thead>
           <tbody>
-            {!tableData.length && (<tr><td colSpan={5} style={{ textAlign: "center" }}>No Result</td></tr>)}
+            {!tableData.length && (
+              <tr>
+                <td colSpan={5} style={{ textAlign: "center" }}>
+                  No Result
+                </td>
+              </tr>
+            )}
             {tableData.map((user, index) => {
-              const { login: { username }, name, email, gender, registered: { date: registeredDate } } = user;
+              const {
+                login: { username },
+                name,
+                email,
+                gender,
+                registered: { date: registeredDate }
+              } = user;
               const { first: firstName, last: lastName } = name;
               return (
                 <tr key={index}>
@@ -94,29 +110,25 @@ console.log(data, tableData);
           <ul className="pagination">
             <li>
               <button onClick={() => setPage(page - 1)} disabled={page === DEFAULT_PAGE}>
-                <ArrowDownIcon style={{ transform: "rotate(90deg)"}} />
+                <ArrowDownIcon style={{ transform: "rotate(90deg)" }} />
               </button>
             </li>
             {[...Array(totalPage)].map((_item, index) => (
               <li key={index}>
-                <button
-                  onClick={() => setPage(index + 1)}
-                  style={index + 1 === page ? selectedPageStyle : undefined}
-                >
+                <button onClick={() => setPage(index + 1)} style={index + 1 === page ? selectedPageStyle : undefined}>
                   {index + 1}
                 </button>
               </li>
             ))}
             <li>
               <button onClick={() => setPage(page + 1)} disabled={page === totalPage}>
-              <ArrowDownIcon style={{ transform: "rotate(-90deg)"}} />
+                <ArrowDownIcon style={{ transform: "rotate(-90deg)" }} />
               </button>
             </li>
           </ul>
         </div>
       </div>
     );
-    
   };
 
   return (

@@ -19,6 +19,12 @@
   line-height: 18px;
 }
 
+.dropdown-inner-container:active {
+  outline: 1px solid #0ea5e9;
+  border-color: #0ea5e9;
+  outline-offset: -2px;
+}
+
 .arrow-icon-container {
   height: 12px;
   width: 12px;

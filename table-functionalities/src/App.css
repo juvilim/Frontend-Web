@@ -2,3 +2,14 @@
   padding: 0 24px;
   color: #1a202c;
 }
+
+button:hover:not(:disabled) {
+  border-color: #0ea5e9;
+  color: #0ea5e9;
+  fill: #0ea5e9;
+  cursor: pointer;
+}
+
+button:disabled {
+  fill: #cbd5e0;
+}

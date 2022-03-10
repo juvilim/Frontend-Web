@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { SearchIcon } from "../SearchIcon";
 
-import "./SearchField.css";
+import "./style.css";
 
 interface Props {
   title: string;
@@ -11,7 +11,6 @@ interface Props {
 }
 
 const SearchField = ({ title, value, setValue }: Props) => {
-  // TODO: input focus styling
   const [input, setInput] = React.useState<string>(value);
 
   React.useEffect(() => {

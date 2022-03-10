@@ -1,36 +1,27 @@
 import { useQuery } from "react-query";
+import { RandomUser, SortingRule } from "src/types";
 
-import { BASE_URL, DEFAULT_PAGE_SIZE, DEFAULT_RESULTS } from "../constants/constants";
-
-export interface RandomUser {
-  login: {
-    username: string;
-  };
-  name: {
-    first: string;
-    last: string;
-  };
-  email: string;
-  gender: string;
-  registered: {
-    date: Date;
-  };
-}
+import { BASE_URL, DEFAULT_PAGE_SIZE, DEFAULT_RESULTS, GENDER_OPTIONS } from "../constants/constants";
 
 interface RandomUsersArgs {
   page: number;
   gender: string;
   keyword: string;
+  sort?: SortingRule;
 }
 
-export const useGetRandomUsers = ({ page, gender, keyword }: RandomUsersArgs) => {
-  //`page=${page}`,
-  const queryParams: string[] = [`pageSize=${DEFAULT_PAGE_SIZE}`, `results=${DEFAULT_RESULTS}`];
-  // if (gender) queryParams.push(`gender=${gender}`);
-  // if (keyword) queryParams.push(`keyword=${keyword}`);
+export const useGetRandomUsers = ({ page, gender, keyword, sort }: RandomUsersArgs) => {
+  const queryParams: string[] = [
+    `page=${page}`,
+    `pageSize=${DEFAULT_PAGE_SIZE}`,
+    `results=${DEFAULT_RESULTS}`,
+    "seed=seed"
+  ];
+  if (gender !== GENDER_OPTIONS[0]) queryParams.push(`gender=${gender}`);
+  if (keyword) queryParams.push(`keyword=${keyword}`);
+  if (sort) queryParams.push(`sortBy=${sort.sortBy}`, `sortOrder=${sort.order}`);
 
-  console.log("useGetRandomUsers", queryParams);
-  return useQuery<RandomUser[]>(["users"], async () => {
+  return useQuery<RandomUser[]>(["users", gender, keyword], async () => {
     const response = await fetch(`${BASE_URL}?${queryParams.join("&")}`, {
       method: "GET"
     });

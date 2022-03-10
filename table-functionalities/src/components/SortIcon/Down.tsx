@@ -6,8 +6,8 @@ export const SortDownIcon = () => {
       focusable="false"
       data-prefix="fas"
       data-icon="sort"
-      width="12"
-      height="12"
+      width={15}
+      height={15}
       role="img"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 320 512"

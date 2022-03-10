@@ -17,6 +17,10 @@ input {
   border-radius: 4px;
 }
 
+input:focus {
+  outline-color: #0ea5e9;
+}
+
 .search-icon-container {
   height: 36px;
   width: 36px;

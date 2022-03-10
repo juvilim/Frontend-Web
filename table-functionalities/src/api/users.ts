@@ -25,10 +25,8 @@ export const useGetRandomUsers = ({ page, gender, keyword, sort }: RandomUsersAr
     const response = await fetch(`${BASE_URL}?${queryParams.join("&")}`, {
       method: "GET"
     });
-    console.log("resp", response);
     const responseJson = await response.json();
     if (!response.ok) {
-      console.error(responseJson.message);
       throw new Error(responseJson.message);
     }
 

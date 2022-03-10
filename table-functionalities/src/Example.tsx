@@ -1,10 +1,11 @@
 import * as React from "react";
+
 import "./Example.css";
 import Dropdown from "./components/Dropdown";
 import SearchField from "./components/SearchField";
-import { SortDownIcon } from "./components/SortDownIcon";
+// import { SortDownIcon } from "./components/SortDownIcon";
 import { SortIcon } from "./components/SortIcon";
-import { SortUpIcon } from "./components/SortUpIcon";
+// import { SortUpIcon } from "./components/SortUpIcon";
 import { GENDER_OPTIONS, DEFAULT_PAGE, DEFAULT_PAGE_SIZE } from "./constants/constants";
 import { useGetRandomUsers } from "./api/users";
 import { ArrowDownIcon } from "./components/ArrowDownIcon";

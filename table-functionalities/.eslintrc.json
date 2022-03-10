@@ -1,34 +1,33 @@
 {
-	"env": {
-		"browser": true,
-		"es2021": true,
-		"jest": true // to remove 'test' / 'expect' is not defined error
-	},
-	"extends": [
-		"eslint:recommended",
-		"plugin:react/recommended",
-		"plugin:@typescript-eslint/recommended",
-		"plugin:prettier/recommended" // from eslint-plugin-prettier. it runs Prettier as an ESLint rule.
-	],
-	"parser": "@typescript-eslint/parser",
-	"parserOptions": {
-		"ecmaFeatures": {
-				"jsx": true
-		},
-		"ecmaVersion": "latest",
-		"sourceType": "module"
-	},
-	"plugins": [
-		"react",
-		"@typescript-eslint"
-	],
-	"rules": {
-		"react/react-in-jsx-scope": "off", // optional to import react to a file
-		"import/order": ["error", { "newlines-between": "always" }] // sort import rule with auto-fixer
-	},
-	"settings": {
-		"react": {
-			"version": "detect" // tells eslint-plugin-react to automatically detect the React version
-		}
-	}
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true // to remove 'test' / 'expect' is not defined error
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended", // from eslint-plugin-prettier. it runs Prettier as an ESLint rule.
+    "plugin:import/typescript" // from eslint-plugin-import
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["react", "@typescript-eslint", "prettier", "import"],
+  "rules": {
+    "prettier/prettier": "error",
+    "react/react-in-jsx-scope": "off", // optional to import react to a file
+    "import/order": ["error", { "newlines-between": "always" }] // sort import rule with auto-fixer
+  },
+  "settings": {
+    "react": {
+      "version": "detect" // tells eslint-plugin-react to automatically detect the React version
+    }
+  }
 }

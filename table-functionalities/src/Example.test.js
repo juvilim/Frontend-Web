@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+
 import Example from "./Example";
 
 test("renders Example With Search and Filter link", () => {

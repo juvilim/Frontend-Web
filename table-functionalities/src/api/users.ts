@@ -1,5 +1,6 @@
 import { useQuery } from "react-query";
-import { BASE_URL, DEFAULT_PAGE_SIZE, DEFAULT_RESULTS } from "src/constants/constants";
+
+import { BASE_URL, DEFAULT_PAGE_SIZE, DEFAULT_RESULTS } from "../constants/constants";
 
 export interface RandomUser {
   login: {

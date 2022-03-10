@@ -28,7 +28,7 @@
     "deploy": "gh-pages -d build",
     "lint": "eslint .",
     "lintFix": "eslint --fix",
-    "format": "prettier --write \"**/*.{js,ts,tsx}\""
+    "format": "prettier --write \"**/*.{js,ts,tsx,css}\""
   },
   "eslintConfig": {
     "extends": [

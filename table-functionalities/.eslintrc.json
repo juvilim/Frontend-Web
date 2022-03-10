@@ -21,7 +21,7 @@
   },
   "plugins": ["react", "@typescript-eslint", "prettier", "import"],
   "rules": {
-    "prettier/prettier": "error",
+    "prettier/prettier": "error", // report Prettier error as ESLint error
     "react/react-in-jsx-scope": "off", // optional to import react to a file
     "import/order": ["error", { "newlines-between": "always" }] // sort import rule with auto-fixer
   },

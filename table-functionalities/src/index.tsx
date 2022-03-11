@@ -24,7 +24,7 @@ ReactDOM.render(
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Routes>
-          <Route path={`${GITHUB_REPO_PATH}/`} element={<App />} />
+          <Route path={`${GITHUB_REPO_PATH}`} element={<App />} />
           <Route path={`${GITHUB_REPO_PATH}/example`} element={<Example />} />
         </Routes>
       </BrowserRouter>

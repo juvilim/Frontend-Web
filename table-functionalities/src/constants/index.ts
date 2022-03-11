@@ -5,7 +5,7 @@ export const ROUTES = [
     name: "example"
   },
   {
-    path: GITHUB_REPO_PATH + "/",
+    path: GITHUB_REPO_PATH,
     name: "home"
   }
 ];

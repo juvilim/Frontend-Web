@@ -11,20 +11,23 @@ interface Props {
 }
 
 const Breadcrumbs = ({ pathname, navigate }: Props) => {
-  const currentPath = pathname.replace(GITHUB_REPO_PATH + "/", "");
-  const data = currentPath.split("/");
+  const currentPath = pathname.replace(GITHUB_REPO_PATH, "");
+  const data = currentPath.startsWith("/") ? currentPath.split("/") : [currentPath];
 
   return (
     <nav>
       <ol className="breadcrumbs-ol">
-        {data.map((item, index) => (
-          <React.Fragment key={index}>
-            <li onClick={() => navigate(ROUTES.find((route) => route.name === item).path)}>
-              {item} {index === data.length - 1 ? " Page" : ""}
-            </li>
-            {index !== data.length - 1 && <li>/</li>}
-          </React.Fragment>
-        ))}
+        {data.map((item, index) => {
+          const name = item || "home";
+          return (
+            <React.Fragment key={index}>
+              <li onClick={() => navigate(ROUTES.find((route) => route.name === name).path)}>
+                {name} {index === data.length - 1 ? " Page" : ""}
+              </li>
+              {index !== data.length - 1 && <li>/</li>}
+            </React.Fragment>
+          );
+        })}
       </ol>
     </nav>
   );

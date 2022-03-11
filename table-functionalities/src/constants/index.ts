@@ -1,11 +1,11 @@
 export const GITHUB_REPO_PATH = "/Frontend-Web";
 export const ROUTES = [
   {
-    path: GITHUB_REPO_PATH + "/home/example",
+    path: GITHUB_REPO_PATH + "/example",
     name: "example"
   },
   {
-    path: GITHUB_REPO_PATH + "/home",
+    path: GITHUB_REPO_PATH + "/",
     name: "home"
   }
 ];

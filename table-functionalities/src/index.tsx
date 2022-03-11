@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import "./index.css";
 
@@ -24,8 +24,8 @@ ReactDOM.render(
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Routes>
-          <Route path={`${GITHUB_REPO_PATH}/home`} element={<App />} />
-          <Route path={`${GITHUB_REPO_PATH}/home/example`} element={<Example />} />
+          <Route path={`${GITHUB_REPO_PATH}/`} element={<App />} />
+          <Route path={`${GITHUB_REPO_PATH}/example`} element={<Example />} />
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>

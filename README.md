@@ -7,7 +7,7 @@ This project is deployed using Github. Click [here](https://juvilim.github.io/Fr
 1. git clone https://github.com/juvilim/Frontend-Web.git
 2. go to `table-functionalities` folder
 3. npm start
-4. go to http://localhost:3000/
+4. go to http://localhost:3000/Frontend-Web
 
 ### Notes
 For more detailed technical information, please go to `README.md` inside `table-functionalities` folder.

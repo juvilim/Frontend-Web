@@ -1,4 +1,4 @@
-import { DEFAULT_PAGE } from "src/constants/constants";
+import { DEFAULT_PAGE } from "src/constants";
 
 import { ArrowLeftIcon, ArrowRightIcon } from "../ArrowIcon";
 

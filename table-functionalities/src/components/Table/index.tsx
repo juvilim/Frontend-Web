@@ -1,4 +1,4 @@
-import { SortOrder, TABLE_COLUMNS } from "src/constants/constants";
+import { SortOrder, TABLE_COLUMNS } from "src/constants";
 import { SortingRule, User } from "src/types";
 
 import { SortDownIcon, SortIcon, SortUpIcon } from "../SortIcon";

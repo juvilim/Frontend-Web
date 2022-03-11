@@ -1,10 +1,14 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import "./index.css";
+
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import Example from "./Example";
+import { GITHUB_REPO_PATH } from "./constants";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -18,7 +22,12 @@ const queryClient = new QueryClient({
 ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <App />
+      <BrowserRouter>
+        <Routes>
+          <Route path={`${GITHUB_REPO_PATH}/home`} element={<App />} />
+          <Route path={`${GITHUB_REPO_PATH}/home/example`} element={<Example />} />
+        </Routes>
+      </BrowserRouter>
     </QueryClientProvider>
   </React.StrictMode>,
   document.getElementById("root")

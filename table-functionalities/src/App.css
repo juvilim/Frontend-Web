@@ -1,5 +1,4 @@
 .App {
-  padding: 0 24px;
   color: #1a202c;
 }
 
@@ -12,4 +11,13 @@ button:hover:not(:disabled) {
 
 button:disabled {
   fill: #cbd5e0;
+}
+
+.navigate-button {
+  height: 36px;
+  padding: 8px 16px;
+  font-size: 12px;
+  background-color: transparent;
+  border: 1px solid #cbd5e0;
+  border-radius: 4px;
 }

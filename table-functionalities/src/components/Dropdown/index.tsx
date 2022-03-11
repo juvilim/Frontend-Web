@@ -1,6 +1,6 @@
 import * as _ from "lodash";
 import * as React from "react";
-import { SEARCH_DELAY } from "src/constants/constants";
+import { SEARCH_DELAY } from "src/constants";
 
 import { ArrowDownIcon } from "../ArrowIcon/Down";
 import { ArrowUpIcon } from "../ArrowIcon/Up";

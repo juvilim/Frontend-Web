@@ -1,3 +1,15 @@
+export const GITHUB_REPO_PATH = "/Frontend-Web";
+export const ROUTES = [
+  {
+    path: GITHUB_REPO_PATH + "/home/example",
+    name: "example"
+  },
+  {
+    path: GITHUB_REPO_PATH + "/home",
+    name: "home"
+  }
+];
+
 export const BASE_URL = "https://randomuser.me/api/";
 export const SEARCH_DELAY = 500;
 export const GENDER_OPTIONS = ["all", "male", "female"];

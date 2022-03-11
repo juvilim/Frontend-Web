@@ -1,4 +1,4 @@
-import { SortOrder } from "./constants/constants";
+import { SortOrder } from "./constants";
 
 export interface RandomUser {
   login: {

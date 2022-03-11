@@ -1,21 +1,25 @@
 import * as React from "react";
 import * as _ from "lodash";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import "./Example.css";
 
 import Dropdown from "./components/Dropdown";
 import SearchField from "./components/SearchField";
-import { GENDER_OPTIONS, DEFAULT_PAGE, DEFAULT_PAGE_SIZE, SortOrder, SEARCH_DELAY } from "./constants/constants";
+import { GENDER_OPTIONS, DEFAULT_PAGE, DEFAULT_PAGE_SIZE, SortOrder, SEARCH_DELAY } from "./constants";
 import { useGetRandomUsers } from "./api/users";
 import Pagination from "./components/Pagination";
 import { SortingRule, User } from "./types";
 import Table from "./components/Table";
+import Breadcrumbs from "./components/Breadcrumbs";
 
 const DEFAULT_KEYWORD = "";
 const DEFAULT_GENDER = GENDER_OPTIONS[0];
 
 function Example() {
-  // TODO: breadcrumb
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
   const [keyword, setKeyword] = React.useState<string>(DEFAULT_KEYWORD);
   const [selectedGender, setSelectedGender] = React.useState(DEFAULT_GENDER);
   const [page, setPage] = React.useState(DEFAULT_PAGE);
@@ -129,6 +133,7 @@ function Example() {
   const resetDisabled = keyword === DEFAULT_KEYWORD && selectedGender === DEFAULT_GENDER && !sort;
   return (
     <div className="Example">
+      <Breadcrumbs pathname={pathname} navigate={navigate} />
       <h2 className="title">Example With Search and Filter</h2>
       <div className="feature-container">
         <SearchField title="Search" value={keyword} setValue={setKeyword} />

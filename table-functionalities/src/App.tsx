@@ -1,13 +1,23 @@
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import "./App.css";
-import Example from "./Example";
+import Breadcrumbs from "./components/Breadcrumbs";
+import { ROUTES } from "./constants";
 
 function App() {
-  // TODO: breadcrumb and handle routing
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
   return (
     <div className="App">
-      <Example />
+      <Breadcrumbs pathname={pathname} navigate={navigate} />
+      <button
+        className="navigate-button"
+        onClick={() => navigate(ROUTES.find((route) => route.name === "example").path)}
+      >
+        Go to Example page
+      </button>
     </div>
   );
 }

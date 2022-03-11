@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
 import { RandomUser, SortingRule } from "src/types";
 
-import { BASE_URL, DEFAULT_PAGE_SIZE, DEFAULT_RESULTS, GENDER_OPTIONS } from "../constants/constants";
+import { BASE_URL, DEFAULT_PAGE_SIZE, DEFAULT_RESULTS, GENDER_OPTIONS } from "../constants";
 
 interface RandomUsersArgs {
   page: number;

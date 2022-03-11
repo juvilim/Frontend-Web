@@ -1,0 +1,17 @@
+.breadcrumbs-ol {
+  display: flex;
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.breadcrumbs-ol li {
+  margin-right: 8px;
+  color: grey;
+  font-size: 14px;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.breadcrumbs-ol li:last-child {
+  color: #1a202c;
+}

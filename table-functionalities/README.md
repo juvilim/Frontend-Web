@@ -7,9 +7,11 @@ This is a web page created using [CRA](https://create-react-app.dev/) that conta
 - sort by column
 - pagination
 
+
 ### Tech Stacks
 
-Key Technologies: React and Typescript.
+Key Technologies: React, Typescript, CSS.
+
 Libraries: Jest (default from CRA), React-Query, React Router DOM, Lodash.
 
 I use [lodash](https://lodash.com/)'s debounce to debounce most of the functionalities (search, filter, and sort) to delay the functionalities to improve the web performance. For routing, navigating and the `Breadcrumb` component I use [React Router DOM](https://reactrouterdotcom.fly.dev/docs/en/v6). Then for data fetching, state management and error handling I use `useQuery` from [React-Query](https://react-query.tanstack.com/).
@@ -24,11 +26,18 @@ Why use `react-query`, not `React.useState` + `React.useEffect`?
 ### VSCode Extensions
 
 Linter: ESLint
+
 Code Formatter: Prettier
 
 I use [ESLint](https://eslint.org/) to help detect syntax and style errors and [Prettier](https://prettier.io/) to take care of my code formatting.
 
+
 ### Links
 
 Link Public Git to this repo: https://github.com/juvilim/Frontend-Web
+
 This project is deployed using Github Pages. Demo link: https://juvilim.github.io/Frontend-Web/home/example
+
+### Notes
+
+If you want test locally and make changes of the API/debounce delay time/whatever value, every global constant variables are stored in `/constants/index.tsx`.

@@ -19,7 +19,7 @@
   line-height: 18px;
 }
 
-.dropdown-inner-container:active {
+.dropdown-inner-container:hover {
   outline: 1px solid #0ea5e9;
   border-color: #0ea5e9;
   outline-offset: -2px;

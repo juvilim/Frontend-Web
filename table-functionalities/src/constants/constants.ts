@@ -1,4 +1,5 @@
 export const BASE_URL = "https://randomuser.me/api/";
+export const SEARCH_DELAY = 500;
 export const GENDER_OPTIONS = ["all", "male", "female"];
 export const TABLE_COLUMNS = [
   { label: "Username", value: "username" },

@@ -1,36 +1,43 @@
 import * as React from "react";
+import * as _ from "lodash";
 
 import "./Example.css";
+
 import Dropdown from "./components/Dropdown";
 import SearchField from "./components/SearchField";
-import { GENDER_OPTIONS, DEFAULT_PAGE, DEFAULT_PAGE_SIZE, SortOrder } from "./constants/constants";
+import { GENDER_OPTIONS, DEFAULT_PAGE, DEFAULT_PAGE_SIZE, SortOrder, SEARCH_DELAY } from "./constants/constants";
 import { useGetRandomUsers } from "./api/users";
 import Pagination from "./components/Pagination";
 import { SortingRule, User } from "./types";
 import Table from "./components/Table";
 
-const DEFAULT_SEARCH_VALUE = "";
+const DEFAULT_KEYWORD = "";
 const DEFAULT_GENDER = GENDER_OPTIONS[0];
 
 function Example() {
   // TODO: breadcrumb
-  const [searchValue, setSearchValue] = React.useState<string>(DEFAULT_SEARCH_VALUE);
+  const [keyword, setKeyword] = React.useState<string>(DEFAULT_KEYWORD);
   const [selectedGender, setSelectedGender] = React.useState(DEFAULT_GENDER);
   const [page, setPage] = React.useState(DEFAULT_PAGE);
   const [sort, setSort] = React.useState<SortingRule | undefined>(undefined);
 
-  const { isLoading, isError, data, error } = useGetRandomUsers({
+  const { isLoading, isError, data, error, refetch } = useGetRandomUsers({
     page,
     gender: selectedGender,
-    keyword: searchValue,
+    keyword,
     sort
   });
 
+  const debouncedFetchData = _.debounce(() => {
+    refetch();
+  }, SEARCH_DELAY);
+
   React.useEffect(() => {
-    if (searchValue || selectedGender || sort) {
+    if (keyword || selectedGender || sort) {
       setPage(DEFAULT_PAGE);
+      debouncedFetchData();
     }
-  }, [searchValue, selectedGender, sort]);
+  }, [keyword, selectedGender, sort]);
 
   const sanitizedData: User[] = React.useMemo(() => {
     return data?.map((user) => {
@@ -64,12 +71,12 @@ function Example() {
 
   const filteredData = sortedData?.filter((user) => {
     let bool = true;
-    if (searchValue && selectedGender !== DEFAULT_GENDER) {
+    if (keyword && selectedGender !== DEFAULT_GENDER) {
       bool =
-        hasKeyword([user.name, user.username, user.email], searchValue) &&
+        hasKeyword([user.name, user.username, user.email], keyword) &&
         user.gender.toLowerCase() === selectedGender.toLowerCase();
-    } else if (searchValue) {
-      bool = hasKeyword([user.name, user.username, user.email], searchValue);
+    } else if (keyword) {
+      bool = hasKeyword([user.name, user.username, user.email], keyword);
     } else if (selectedGender !== DEFAULT_GENDER) {
       bool = user.gender.toLowerCase() === selectedGender.toLowerCase();
     }
@@ -85,7 +92,7 @@ function Example() {
   }, [filteredData, page]);
 
   const handleResetFilter = () => {
-    setSearchValue(DEFAULT_SEARCH_VALUE);
+    setKeyword(keyword);
     setSelectedGender(DEFAULT_GENDER);
   };
 
@@ -118,12 +125,12 @@ function Example() {
     );
   };
 
-  const resetDisabled = searchValue === DEFAULT_SEARCH_VALUE && selectedGender === DEFAULT_GENDER && !sort;
+  const resetDisabled = keyword === DEFAULT_KEYWORD && selectedGender === DEFAULT_GENDER && !sort;
   return (
     <div className="Example">
       <h2 className="title">Example With Search and Filter</h2>
       <div className="feature-container">
-        <SearchField title="Search" value={searchValue} setValue={setSearchValue} />
+        <SearchField title="Search" value={keyword} setValue={setKeyword} />
         <Dropdown title="Gender" options={GENDER_OPTIONS} selected={selectedGender} setSelected={setSelectedGender} />
         <button className="reset-button" onClick={handleResetFilter} disabled={resetDisabled}>
           Reset Filter

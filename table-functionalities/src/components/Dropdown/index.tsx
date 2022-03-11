@@ -1,4 +1,6 @@
+import * as _ from "lodash";
 import * as React from "react";
+import { SEARCH_DELAY } from "src/constants/constants";
 
 import { ArrowDownIcon } from "../ArrowIcon/Down";
 import { ArrowUpIcon } from "../ArrowIcon/Up";
@@ -15,6 +17,13 @@ interface Props {
 const Dropdown = ({ title, options, selected, setSelected }: Props) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
+  const debouncedSelect = React.useRef(
+    _.debounce((option: string) => {
+      setSelected(option);
+      setIsOpen(false);
+    }, SEARCH_DELAY)
+  ).current;
+
   return (
     <div className="dropdown-outer-container">
       <span>{title}</span>
@@ -27,14 +36,7 @@ const Dropdown = ({ title, options, selected, setSelected }: Props) => {
           <div className="dropdown-options">
             {options.map((option, index) => {
               return (
-                <div
-                  className="dropdown-option"
-                  key={index}
-                  onClick={() => {
-                    setSelected(option);
-                    setIsOpen(false);
-                  }}
-                >
+                <div className="dropdown-option" key={index} onClick={() => debouncedSelect(option)}>
                   {option}
                 </div>
               );

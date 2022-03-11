@@ -21,21 +21,16 @@ function Example() {
   const [page, setPage] = React.useState(DEFAULT_PAGE);
   const [sort, setSort] = React.useState<SortingRule | undefined>(undefined);
 
-  const { isLoading, isError, data, error, refetch } = useGetRandomUsers({
+  const { isLoading, isError, data, error } = useGetRandomUsers({
     page,
     gender: selectedGender,
     keyword,
     sort
   });
 
-  const debouncedFetchData = _.debounce(() => {
-    refetch();
-  }, SEARCH_DELAY);
-
   React.useEffect(() => {
     if (keyword || selectedGender || sort) {
       setPage(DEFAULT_PAGE);
-      debouncedFetchData();
     }
   }, [keyword, selectedGender, sort]);
 
@@ -92,23 +87,29 @@ function Example() {
   }, [filteredData, page]);
 
   const handleResetFilter = () => {
-    setKeyword(keyword);
+    setKeyword(DEFAULT_KEYWORD);
     setSelectedGender(DEFAULT_GENDER);
   };
 
+  const debouncedSort = React.useRef(
+    _.debounce((sort?: SortingRule) => {
+      setSort(sort);
+    }, SEARCH_DELAY)
+  ).current;
+
   const handleColumnHeaderClick = (selectedColumn: string) => () => {
     if (!sort || sort?.sortBy !== selectedColumn) {
-      setSort({
+      debouncedSort({
         sortBy: selectedColumn,
         order: SortOrder.ASC
       });
     } else if (sort.order === SortOrder.ASC) {
-      setSort({
+      debouncedSort({
         sortBy: sort.sortBy,
         order: SortOrder.DESC
       });
     } else {
-      setSort(undefined);
+      debouncedSort(undefined);
     }
   };
 

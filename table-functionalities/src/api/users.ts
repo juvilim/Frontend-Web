@@ -21,7 +21,7 @@ export const useGetRandomUsers = ({ page, gender, keyword, sort }: RandomUsersAr
   if (keyword) queryParams.push(`keyword=${keyword}`);
   if (sort) queryParams.push(`sortBy=${sort.sortBy}`, `sortOrder=${sort.order}`);
 
-  return useQuery<RandomUser[]>(["users", gender, keyword], async () => {
+  return useQuery<RandomUser[]>(["users", page, gender, keyword, sort], async () => {
     const response = await fetch(`${BASE_URL}?${queryParams.join("&")}`, {
       method: "GET"
     });

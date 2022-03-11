@@ -31,14 +31,14 @@ const Table = ({ data, sort, onColumnHeaderClick }: Props) => {
         </tr>
       </thead>
       <tbody>
-        {!data.length && (
+        {(!data || !data.length) && (
           <tr>
             <td colSpan={5} style={{ textAlign: "center" }}>
               No Result
             </td>
           </tr>
         )}
-        {data.map((item, index) => {
+        {data?.map((item, index) => {
           const { username, name, email, gender, registeredDate } = item;
           return (
             <tr key={index}>
